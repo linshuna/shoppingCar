@@ -1,0 +1,2220 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>美团外卖</title>
+	<link rel="stylesheet" type="text/css" href="css/waimai.css">
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  
+  
+</head>
+<body>
+<!-- 添加食物时，有个动画效果 -->
+<div id="flyItem" class="fly_item" data-center="376,459" style="left: 1029px; top: 715px; visibility: hidden; transform: translate(375.5px, 458.5px);border-radius: 50%;width: 10px;height: 10px;background: orange;position:relative;z-index: 10002;"></div>
+<!-- 头部 -->
+<div class="page-header clearfix">
+    <div class="top-nav">
+      <div class="topnav-wrap">
+        <div class="fr welcome">
+            <span id="dis-login" class="top-disloginbar fl">
+                <a class="j-register register-btn fl" href="http://passport.meituan.com/account/unitivesignup?service=waimai&amp;continue=http%3A%2F%2Fwaimai.meituan.com%3A80%2Faccount%2Fsettoken%3Fcontinue%3Dhttp%253A%252F%252Fwaimai.meituan.com%252Frestaurant%252F144726951544727916" rel="nofollow">注册</a>
+                <span class="lg-divide fl">|</span>
+                <a class="j-login login-btn fl" href="http://passport.meituan.com/account/unitivelogin?service=waimai&amp;continue=http%3A%2F%2Fwaimai.meituan.com%3A80%2Faccount%2Fsettoken%3Fcontinue%3Dhttp%253A%252F%252Fwaimai.meituan.com%252Frestaurant%252F144726951544727916" rel="nofollow">登录</a>
+            </span>
+            <a href="/mobile/download/default" class="wap fl" rel="nofollow"><i class="icon i-top-mobile"></i><span>手机版</span></a>
+            <a target="_blank" href="http://meituan.com" class="site-name fl"><i class="icon i-top-tuan"></i><span>美团网</span></a>
+            <a target="_blank" href="/contact/call" class="site-name fl"><i class="icon i-top-call"></i><span>联系我们</span></a>
+        </div>
+        <i class="fl icon i-top-loc"></i>
+        <span class="current-city fl" id="current-city">广州</span>
+
+        <span class="address fl" id="address">
+            <span id="curr-location" class="current-address fl">流花,解放北,火车站</span>
+            <span class="addr-dvd">|</span>
+            <div class="change fl clearfix" id="changePosition">
+              <a href="/?stay=1" class="change-link">
+                <span class="fl">切换地址</span>
+              </a>
+            </div>
+        </span>
+
+      </div>
+    </div>
+    <div class="middle-nav">
+      <div class="middlenav-wrap clearfix">
+          <h1 class="logo fl">
+            <a href="/" title="美团外卖"><img src="images/logo.png" alt="美团外卖"></a>
+          </h1>
+          <div class="desire fl">
+            <a href="/" class="ca-lightgrey"><span>首页</span></a>
+            <a href="/customer/order/list" class="ca-lightgrey" rel="nofollow"><span>我的订单</span></a>
+            <a href="/contact/contactus" class="ca-lightgrey"><span>入驻加盟</span></a>
+          </div>
+          <div class="search-box fr">
+              <input type="text" class="header-search fl" placeholder="搜索商家，美食">
+              <a href="javascript:;" class="doSearch fr"></a>
+              <div class="result-box">
+                <div class="result-left fl">
+                    <div class="rest-words ct-black">餐厅</div>
+                    <div class="food-words ct-black">美食</div>
+                </div>
+                <div class="result-right fl">
+                    <ul class="rest-lists">
+                    </ul>
+                    <div class="line"></div>
+                    <ul class="food-lists">
+                    </ul>
+                </div>
+              </div>
+              <div class="no-result">
+                没有找到相关结果，请换个关键字搜索！
+              </div>
+          </div>
+      </div>
+    </div>
+</div>
+<!-- 中间部分 -->
+<div class="rest-info">
+    <div class="right-bar fr clearfix ct-lightgrey">
+        <div class="fl average-speed">
+            <div class="nu">
+                  <strong>39</strong>分钟
+                 <i class="icon i-triangle-dn up10px"></i>
+            </div>
+            <div class="desc">平均送餐时间</div>
+            <div class="tipbox">
+              <i class="icon i-tagtop"></i>
+              <p>餐厅大约在39分钟内将美食送达</p>
+              <p class="ct-red red-text"><i class="icon i-arrsmallup"></i>快于周边60%的餐厅</p>
+            </div>
+        </div>
+
+        <div class="fl ack-ti">
+            <div class="nu">
+                  <strong>20</strong>元
+            </div>
+            <div class="desc">起送</div>
+        </div>
+
+        <div class="fl in-ti">
+            <div class="nu">
+                <strong>6</strong>元
+            </div>
+            <div class="desc">配送费</div>
+        </div>
+    </div>
+    <div class="details">
+      <div class="up-wrap clearfix">
+          <div class="avatar fl">
+              <img class="scroll-loading" src="http://p1.meituan.net/120.0/xianfu/1d386c4a0f9fb74dbdc70d791368734c34816.jpg" data-src="http://p1.meituan.net/120.0/xianfu/1d386c4a0f9fb74dbdc70d791368734c34816.jpg" data-max-width="120" data-max-height="90" style="width: 120px; height: 90px;">
+          </div>
+          <div class="list">
+              <div class="na">
+                  <a href="javascript:void(0)">
+                      <span>生煎先生(环市中路店)</span>
+                      <i class="icon i-triangle-dn"></i>
+                  </a>
+              </div>
+              <div class="clearfix">
+                  <div class="stars clearfix" style="margin-top:6px;">
+                    <span class="star-ranking fl">
+                        <span class="star-score" style="width: 68px"></span>
+                      </span>
+                    <span class="fl mark ct-middlegrey">4.7</span> <br>
+                  </div>
+
+                  <div class="stars clearfix" style="margin-top:7px;">
+                    <span>营业时间：</span><span class="info-detail">0-24</span>
+                  </div>
+
+                  <div class="rest-info-thirdpart" style="color:#434343;max-width:285px;overflow:hidden;text-overflow: ellipsis;white-space: nowrap;">
+                    商家地址：越秀区 环市中路310号之一(近花园酒店)
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="rest-info-down-wrap" style="border:none;padding-top:0px;">
+
+          <div class="telephone" style="margin-left:160px;width:auto;word-wrap:break-word;word-break:break-all;">
+            商家电话：020-83547979
+          </div>
+
+      </div>
+    </div>
+    <div class="fold-3d"></div>
+    <div class="save-up-wrapper">
+      <a href="javascript:;" class="save-up j-save-up " data-poiid="674494">
+        <i class="icon i-heart-22"></i>
+        <p class="ct-black">收藏</p>
+      </a>
+      <p class="cc-lightred-new j-save-up-people"></p>
+    </div>
+</div>
+<!-- 菜单 -->
+<div class="cate-tab-area">
+    <div class="tab-link">
+        <div class="tab-link-inner clearfix">
+            <a href="javascript:void(0)" class="tab-item  active">菜单</a>
+            <a href="javascript:void(0)" class="tab-item">评价</a>
+            <a href="javascript:void(0)" class="tab-item ">食品安全档案</a>
+        </div>
+    </div>
+
+    <div class="ori-foodtype-nav clearfix">
+      <ul class="clearfix">
+          <li class="active">
+              <a href="javascript:;" class="type" data-anchor="0" title="2.8折抢">
+                  <span class="name">2.8折抢</span>
+              </a>
+          </li>
+          <li>
+              <a href="javascript:;" class="type" data-anchor="1" title="5折任吃">
+                  <span class="name">5折任吃</span>
+              </a>
+          </li>
+          <li>
+              <a href="javascript:;" class="type" data-anchor="2" title="新品上市">
+                  <span class="name">新品上市</span>
+              </a>
+          </li>
+          <li>
+              <a href="javascript:;" class="type" data-anchor="3" title="主食">
+                  <span class="name">主食</span>
+              </a>
+          </li>
+          <li>
+              <a href="javascript:;" class="type" data-anchor="4" title="配菜">
+                  <span class="name">配菜</span>
+              </a>
+          </li>
+          <li>
+              <a href="javascript:;" class="type" data-anchor="5" title="甜点">
+                <span class="name">甜点</span>
+              </a>
+          </li>
+          <li>
+              <a href="javascript:;" class="type" data-anchor="6" title="饮料">
+                  <span class="name">饮料</span>
+              </a>
+          </li>
+          <li>
+              <a href="javascript:;" class="type" data-anchor="7" title="餐厅形象">
+                  <span class="name">餐厅形象</span>
+              </a>
+          </li>
+      </ul>
+    </div>
+</div>
+
+<!-- 订单 -->
+<div class="shopping-cart clearfix" data-status="1" data-poiname="生煎先生(环市中路店)" data-poiid="674494">
+      <form method="post" action="/order/shoppingcart" id="shoppingCartForm">
+
+          <div class="first-to-app clearfix j-first-to-app" style="top: -235px;">
+            <span class="fl">电脑下单不享优惠了哦，优惠活动手机专享~</span>
+
+          </div>
+
+          <div class="order-list" style="top: -200px;">
+            <div class="title">
+              <span class="fl dishes">菜品<a href="javascript:;" class="clear-cart">[清空]</a></span>
+              <span class="fl">份数</span>
+              <span class="fl ti-price">价格</span>
+            </div>
+
+            <ul style="height: auto; overflow: visible;">
+                <!-- <li class="clearfix  food-278333246_303609892" data-fid="278333246" data-fkey="278333246_303609892">  
+                    <div class="fl na clearfix" title="大骨粉丝汤＋生煎双拼＋青瓜">    
+                        <div class="">大骨粉丝汤＋生煎...</div>      
+                    </div>    
+                    <div class="fl modify clearfix">    
+                        <a href="javascript:;" class="fl minus">-</a>    
+                        <input type="text" class="fl txt-count" value="1 " maxlength="2">    
+                        <a href="javascript:;" class="fl plus">+</a>  
+                    </div>  
+                    <div class="fl pri">¥<span>45</span></div>  
+                </li> -->
+            </ul>
+
+            <div class="other-charge">
+                <div class="clearfix packing-cost">
+                  <span class="fl">包装盒</span>
+                  <span class="fr boxtotalprice">¥2</span>
+                </div>
+                <div class="clearfix delivery-cost">
+                  <span class="fl">配送费(不计入起送价)</span>
+                  <span class="fr shippingfee">¥6</span>
+                </div>
+            </div>
+            <div class="privilege hidden">
+            </div>
+            <div class="total">共<span class="totalnumber">1</span>份，总计<span class="bill">¥53</span></div>
+          </div>
+
+          <div class="footer clearfix">
+            <div class="logo icon fl" id="logo"></div>
+            <div class="brief-order fl" style="display: none;">
+              <span class="count">1份</span>
+              <span class="price">¥53</span>
+            </div>
+            <div class="fr">
+                <a class="ready-pay borderradius-2" href="javascript:;" style="display: none;">还差<span data-left="20" class="margintominprice">0</span>元起送</a>
+                <input class="go-pay borderradius-2" type="submit" value="去下单" style="display: inline-block;">
+                <input type="hidden" value="{&quot;poi&quot;:674494,&quot;foods&quot;:[{&quot;sku&quot;:303609892,&quot;attrs&quot;:[],&quot;num&quot;:1}]}" class="order-data" name="shop_cart">
+            </div>
+          </div>
+      </form>
+</div>
+
+<div class="food-nav">
+    <div class="title-blank hidden" style="display: none;">
+      <span class="tag-na">2.8折抢</span>
+    </div>
+
+      <div class="category">
+          <h3 class="title title-0" title="2.8折抢">
+              <span class="tag-na">2.8折抢</span>
+          </h3>
+          <div class="pic-food-cont clearfix">
+              <div class="j-pic-food pic-food  pic-food-rowlast" id="278327863">
+                  <script type="text/template" id="foodcontext-278327863">
+
+                      {"id":  278327863
+                      ,"name":  "双皮奶"
+                      ,"price":  "7"
+                      ,"origin_price":  "7"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  303611551
+                      ,"name":  ""
+                      ,"price":  "7"
+                      ,"origin_price":  "7"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      }
+                  </script>
+                  <div class="avatar">
+                    <img src="http://p1.meituan.net/210.0/wmproduct/d4a9386ac7c29237a85152d7ab67942980859.jpg" data-src="http://p1.meituan.net/210.0/wmproduct/d4a9386ac7c29237a85152d7ab67942980859.jpg" class="food-shape scroll-loading">
+                          <div class="description">伊利纯牛奶精心熬制，质感细腻嫩滑，口味甜香清淡。</div>
+                  </div>
+
+                  <div class="np clearfix">
+                    <span class="name" title="双皮奶">双皮奶</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                        <i class="icon i-zan"></i>
+                        <span class="cc-lightred-new">(3)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey"><span>月售54份</span></div>
+                  </div>
+
+                <div class="labels clearfix">
+                  <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                  <span id="food278327863-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                  <div class="price fl">
+                      <div class="only">¥7/份</div>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+      <div class="category">
+        <h3 class="title title-1" title="5折任吃">
+
+          <span class="tag-na">5折任吃</span>
+        </h3>
+        <div class="pic-food-cont clearfix">
+            <div class="j-pic-food pic-food  pic-food-rowlast" id="278326792">
+                <script type="text/template" id="foodcontext-278326792">
+                    {"id":  278326792
+                    ,"name":  "生煎先生"
+                    ,"price":  "12"
+                    ,"origin_price":  "12"
+                    ,"minCount":  "1"
+                    ,"onSale":  "1"
+                    ,"sku":  [  {"id":  303607904
+                    ,"name":  ""
+                    ,"price":  "12"
+                    ,"origin_price":  "12"
+                    ,"minCount":  1
+                    ,"stock":  0
+                    ,"isSellOut":  0
+                    }
+                    ]
+                    ,"attr":  [  {"name":  "口味"
+                    ,"list":  [  {"id":  97187203
+                    ,"name":  "配醋"
+                    }
+                    ,  {"id":  97187204
+                    ,"name":  "配辣椒酱"
+                    }
+                    ,  {"id":  97187205
+                    ,"name":  "配醋、辣椒酱"
+                    }
+                    ,  {"id":  97187214
+                    ,"name":  "免醋、辣椒酱"
+                    }
+                    ]
+                    }
+                    ]
+                    }
+                </script>
+                <div class="avatar">
+                    <img src="http://p1.meituan.net/210.0/wmproduct/48180cdbb0a879f3bb2f1ac0b61bdbc6123770.jpg" data-src="http://p1.meituan.net/210.0/wmproduct/48180cdbb0a879f3bb2f1ac0b61bdbc6123770.jpg" class="food-shape scroll-loading">
+                    <div class="description">   具有百年历史的上海传统小吃，皮酥、汁浓、肉香。包子顶部的白芝麻，更有补血养血、美容抗衰老之功效。</div>
+                </div>
+
+                <div class="np clearfix">
+                    <span class="name" title="生煎先生">生煎先生</span>
+                </div>
+
+                <div class="sale-info clearfix">
+                    <div class="fr zan-count">
+                      <i class="icon i-zan"></i>
+                      <span class="cc-lightred-new">(5)</span>
+                    </div>
+                  <div class="sold-count ct-lightgrey"><span>月售89份</span></div>
+                </div>
+
+                <div class="labels clearfix">
+                    <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                    <span id="food278326792-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+                    <div class="price fl">
+                        <div class="only">¥12/份</div>
+                    </div>
+                </div>
+            </div>
+            <div class="j-pic-food pic-food  pic-food-rowlast" id="278330280">
+            <script type="text/template" id="foodcontext-278330280">
+              {"id":  278330280
+              ,"name":  "鸭血粉丝汤＋生煎双拼＋青瓜"
+              ,"price":  "45"
+              ,"origin_price":  "45"
+              ,"minCount":  "1"
+              ,"onSale":  "1"
+              ,"sku":  [  {"id":  303612127
+              ,"name":  ""
+              ,"price":  "45"
+              ,"origin_price":  "45"
+              ,"minCount":  1
+              ,"stock":  0
+              ,"isSellOut":  0
+              }
+              ]
+              }
+            </script>
+            <div class="avatar">
+              <img src="http://p0.meituan.net/210.0/wmproduct/f3ab5596887ae3b2a2cce8d739121b8f126993.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/f3ab5596887ae3b2a2cce8d739121b8f126993.jpg" class="food-shape scroll-loading">
+            </div>
+
+            <div class="np clearfix">
+              <span class="name" title="鸭血粉丝汤＋生煎双拼＋青瓜">
+            鸭血粉丝汤＋生煎双
+            ...
+              </span>
+            </div>
+
+            <div class="sale-info clearfix">
+                <div class="fr zan-count">
+                  <i class="icon i-zan"></i>
+                  <span class="cc-lightred-new">(2)</span>
+                </div>
+              <div class="sold-count ct-lightgrey">
+        <span>月售55份</span>
+                      </div>
+            </div>
+
+            <div class="labels clearfix">
+                  <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                <span id="food278330280-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+              <div class="price fl">
+                  <div class="only">¥45/份</div>
+              </div>
+            </div>
+            </div>
+            <div class="j-pic-food pic-food pic-food-col2 pic-food-rowlast" id="278333246">
+              <script type="text/template" id="foodcontext-278333246">
+                  {"id":  278333246
+                  ,"name":  "大骨粉丝汤＋生煎双拼＋青瓜"
+                  ,"price":  "45"
+                  ,"origin_price":  "45"
+                  ,"minCount":  "1"
+                  ,"onSale":  "1"
+                  ,"sku":  [  {"id":  303609892
+                  ,"name":  ""
+                  ,"price":  "45"
+                  ,"origin_price":  "45"
+                  ,"minCount":  1
+                  ,"stock":  0
+                  ,"isSellOut":  0
+                  }
+                  ]
+                  }
+              </script>
+              <div class="avatar">
+                <img src="http://p0.meituan.net/210.0/wmproduct/8854ed1ee4b90dc87ada428972438276115010.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/8854ed1ee4b90dc87ada428972438276115010.jpg" class="food-shape scroll-loading">
+              </div>
+
+              <div class="np clearfix">
+                <span class="name" title="大骨粉丝汤＋生煎双拼＋青瓜">大骨粉丝汤＋生煎双...</span>
+              </div>
+
+              <div class="sale-info clearfix">
+                  <div class="fr zan-count">
+                    <i class="icon i-zan"></i>
+                    <span class="cc-lightred-new">(3)</span>
+                  </div>
+                  <div class="sold-count ct-lightgrey">
+                    <span>月售65份</span>
+                  </div>
+              </div>
+
+              <div class="labels clearfix">
+                    <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                  <span id="food278333246-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                <div class="price fl">
+                    <div class="only">¥45/份</div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="category">
+          <h3 class="title title-2" title="新品上市">
+            <span class="tag-na">新品上市</span>
+          </h3>
+          <div class="pic-food-cont clearfix">
+            <div class="j-pic-food pic-food  pic-food-rowlast" id="263608569">
+                <script type="text/template" id="foodcontext-263608569">
+                    {"id":  263608569
+                    ,"name":  "牛尾粉丝汤"
+                    ,"price":  "20"
+                    ,"origin_price":  "20"
+                    ,"minCount":  "1"
+                    ,"onSale":  "1"
+                    ,"sku":  [  {"id":  287247137
+                    ,"name":  ""
+                    ,"price":  "20"
+                    ,"origin_price":  "20"
+                    ,"minCount":  1
+                    ,"stock":  0
+                    ,"isSellOut":  0
+                    }
+                    ]
+                    ,"attr":  [  {"name":  "配料"
+                    ,"list":  [  {"id":  89559160
+                    ,"name":  "标准"
+                    }
+                    ,  {"id":  89559161
+                    ,"name":  "免葱花"
+                    }
+                    ,  {"id":  89559162
+                    ,"name":  "免香菜"
+                    }
+                    ,  {"id":  89559163
+                    ,"name":  "免葱花香菜"
+                    }
+                    ]
+                    }
+                    ]
+                    }
+                    
+                </script>
+                <div class="avatar">
+                    <img src="http://p1.meituan.net/210.0/wmproduct/aa712ac0e9b2f750378aa2f6bdbb15ee117783.jpg" data-src="http://p1.meituan.net/210.0/wmproduct/aa712ac0e9b2f750378aa2f6bdbb15ee117783.jpg" class="food-shape scroll-loading">
+                    <div class="description">每日现熬新鲜牛骨汤，补中益气，健脾养胃。</div>
+                </div>
+
+                <div class="np clearfix">
+                  <span class="name" title="牛尾粉丝汤">牛尾粉丝汤</span>
+                </div>
+
+                <div class="sale-info clearfix">
+                    <div class="fr zan-count">
+                      <i class="icon i-zan"></i>
+                      <span class="cc-lightred-new">(1)</span>
+                    </div>
+                    <div class="sold-count ct-lightgrey">
+                        <span>月售9份</span>
+                    </div>
+                </div>
+
+                <div class="labels clearfix">
+                    <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                    <span id="food263608569-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+                    <div class="price fl">
+                        <div class="only">¥20/份</div>
+                    </div>
+                </div>
+            </div>
+            <div class="j-pic-food pic-food  pic-food-rowlast" id="263605021">
+                <script type="text/template" id="foodcontext-263605021">
+                    {"id":  263605021
+                    ,"name":  "大骨粉丝汤"
+                    ,"price":  "20"
+                    ,"origin_price":  "20"
+                    ,"minCount":  "1"
+                    ,"onSale":  "1"
+                    ,"sku":  [  {"id":  287242160
+                    ,"name":  ""
+                    ,"price":  "20"
+                    ,"origin_price":  "20"
+                    ,"minCount":  1
+                    ,"stock":  0
+                    ,"isSellOut":  0
+                    }
+                    ]
+                    ,"attr":  [  {"name":  "配料"
+                    ,"list":  [  {"id":  89559194
+                    ,"name":  "标准"
+                    }
+                    ,  {"id":  89559195
+                    ,"name":  "免葱花"
+                    }
+                    ,  {"id":  89559196
+                    ,"name":  "免香菜"
+                    }
+                    ,  {"id":  89559197
+                    ,"name":  "免葱花香菜"
+                    }
+                    ]
+                    }
+                    ]
+                    }
+                    
+                </script>
+                <div class="avatar">
+                  <img src="http://p0.meituan.net/210.0/wmproduct/beb8d09e2ae0a6a252ee85bb83571bbf120460.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/beb8d09e2ae0a6a252ee85bb83571bbf120460.jpg" class="food-shape scroll-loading">
+                        <div class="description">钙世无双，吃了能长两米高。</div>
+                </div>
+
+                <div class="np clearfix">
+                  <span class="name" title="大骨粉丝汤">大骨粉丝汤</span>
+                </div>
+
+                <div class="sale-info clearfix">
+                    <div class="fr zan-count">
+                      <i class="icon i-zan"></i>
+                      <span class="cc-lightred-new">(3)</span>
+                    </div>
+                    <div class="sold-count ct-lightgrey">
+                        <span>月售31份</span>
+                    </div>
+                </div>
+
+                <div class="labels clearfix">
+                    <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                    <span id="food263605021-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+                    <div class="price fl">
+                        <div class="only">¥20/份</div>
+                    </div>
+                </div>
+            </div>
+          </div>
+      </div>
+      <div class="category">
+          <h3 class="title title-3" title="主食">
+              <span class="tag-na">主食</span>
+          </h3>
+          <div class="pic-food-cont clearfix">
+              <div class="j-pic-food pic-food" id="131768849">
+                  <script type="text/template" id="foodcontext-131768849">
+
+                      {"id":  131768849
+                      ,"name":  "友谊的大排骨面"
+                      ,"price":  "27"
+                      ,"origin_price":  "27"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  140557635
+                      ,"name":  ""
+                      ,"price":  "27"
+                      ,"origin_price":  "27"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      ,"attr":  [  {"name":  "配料"
+                      ,"list":  [  {"id":  22502297
+                      ,"name":  "标准"
+                      }
+                      ,  {"id":  22502298
+                      ,"name":  "免葱花"
+                      }
+                      ,  {"id":  22502299
+                      ,"name":  "免香菜"
+                      }
+                      ,  {"id":  22502300
+                      ,"name":  "免葱花香菜"
+                      }
+                      ]
+                      }
+                      ]
+                      }
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p0.meituan.net/210.0/wmproduct/a11532cc9f1ff57599098a059fd6dde5120151.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/a11532cc9f1ff57599098a059fd6dde5120151.jpg" class="food-shape scroll-loading">
+                      <div class="description">排骨肉质细嫩，搭配手工面条的爽滑，浓郁汤汁配以原汁骨汤。</div>
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="友谊的大排骨面">友谊的大排骨面</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                        <i class="icon i-zan"></i>
+                        <span class="cc-lightred-new">(23)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售64份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food131768849-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+                      <div class="price fl">
+                          <div class="only">¥27/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food  " id="131766966">
+                  <script type="text/template" id="foodcontext-131766966">
+                      {"id":  131766966
+                      ,"name":  "生煎双拼"
+                      ,"price":  "17"
+                      ,"origin_price":  "17"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  140555700
+                      ,"name":  ""
+                      ,"price":  "17"
+                      ,"origin_price":  "17"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      ,"attr":  [  {"name":  "口味"
+                      ,"list":  [  {"id":  66012766
+                      ,"name":  "配醋"
+                      }
+                      ,  {"id":  66012767
+                      ,"name":  "配辣椒酱"
+                      }
+                      ,  {"id":  66012768
+                      ,"name":  "配醋、辣椒酱"
+                      }
+                      ,  {"id":  66012769
+                      ,"name":  "免醋、辣椒酱"
+                      }
+                      ]
+                      }
+                      ]
+                      }
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p0.meituan.net/210.0/wmproduct/afb25e87732f61102f3577c54eaf0594128407.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/afb25e87732f61102f3577c54eaf0594128407.jpg" class="food-shape scroll-loading">
+                      <div class="description">生煎先生与鲜虾芝士搭配，浓郁肉香搭配嫩滑芝士，享受多彩味觉感受</div>
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="生煎双拼">生煎双拼</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                        <i class="icon i-zan"></i>
+                        <span class="cc-lightred-new">(108)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售274份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food131766966-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥17/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food pic-food-col2" id="263601980">
+                  <script type="text/template" id="foodcontext-263601980">
+
+                      {"id":  263601980
+                      ,"name":  "大骨粉丝汤"
+                      ,"price":  "20"
+                      ,"origin_price":  "20"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  287240407
+                      ,"name":  ""
+                      ,"price":  "20"
+                      ,"origin_price":  "20"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      ,"attr":  [  {"name":  "配料"
+                      ,"list":  [  {"id":  89558946
+                      ,"name":  "标准"
+                      }
+                      ,  {"id":  89558947
+                      ,"name":  "免葱花"
+                      }
+                      ,  {"id":  89558948
+                      ,"name":  "免香菜"
+                      }
+                      ,  {"id":  89558949
+                      ,"name":  "免葱花香菜"
+                      }
+                      ]
+                      }
+                      ]
+                      }
+                      
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p0.meituan.net/210.0/wmproduct/beb8d09e2ae0a6a252ee85bb83571bbf120460.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/beb8d09e2ae0a6a252ee85bb83571bbf120460.jpg" class="food-shape scroll-loading">
+                      <div class="description">    钙世无双，吃了能长两米高。</div>
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="大骨粉丝汤">大骨粉丝汤</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                        <i class="icon i-zan"></i>
+                        <span class="cc-lightred-new">(4)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售24份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food263601980-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+                      <div class="price fl">
+                          <div class="only">¥20/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food" id="263601999">
+                  <script type="text/template" id="foodcontext-263601999">
+
+                    {"id":  263601999
+                    ,"name":  "牛尾粉丝汤"
+                    ,"price":  "20"
+                    ,"origin_price":  "20"
+                    ,"minCount":  "1"
+                    ,"onSale":  "1"
+                    ,"sku":  [  {"id":  287239969
+                    ,"name":  ""
+                    ,"price":  "20"
+                    ,"origin_price":  "20"
+                    ,"minCount":  1
+                    ,"stock":  0
+                    ,"isSellOut":  0
+                    }
+                    ]
+                    ,"attr":  [  {"name":  "配料"
+                    ,"list":  [  {"id":  89558904
+                    ,"name":  "标准"
+                    }
+                    ,  {"id":  89558905
+                    ,"name":  "免葱花"
+                    }
+                    ,  {"id":  89558906
+                    ,"name":  "免香菜"
+                    }
+                    ,  {"id":  89558907
+                    ,"name":  "免葱花香菜"
+                    }
+                    ]
+                    }
+                    ]
+                    }
+  
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p1.meituan.net/210.0/wmproduct/aa712ac0e9b2f750378aa2f6bdbb15ee117783.jpg" data-src="http://p1.meituan.net/210.0/wmproduct/aa712ac0e9b2f750378aa2f6bdbb15ee117783.jpg" class="food-shape scroll-loading">
+                      <div class="description">每日现熬新鲜牛骨汤，补中益气，健脾养胃。</div>
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="牛尾粉丝汤">牛尾粉丝汤</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                        <i class="icon i-zan"></i>
+                        <span class="cc-lightred-new">(2)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售17份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food263601999-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+                      <div class="price fl">
+                          <div class="only">¥20/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food" id="65916654">
+                  <script type="text/template" id="foodcontext-65916654">
+
+                    {"id":  65916654
+                    ,"name":  "【招牌】生煎先生（4个）"
+                    ,"price":  "12"
+                    ,"origin_price":  "12"
+                    ,"minCount":  "1"
+                    ,"onSale":  "1"
+                    ,"sku":  [  {"id":  68335915
+                    ,"name":  ""
+                    ,"price":  "12"
+                    ,"origin_price":  "12"
+                    ,"minCount":  1
+                    ,"stock":  0
+                    ,"isSellOut":  0
+                    }
+                    ]
+                    ,"attr":  [  {"name":  "口味"
+                    ,"list":  [  {"id":  66012179
+                    ,"name":  "配醋"
+                    }
+                    ,  {"id":  66012180
+                    ,"name":  "配辣椒酱"
+                    }
+                    ,  {"id":  66012181
+                    ,"name":  "配醋、辣椒酱"
+                    }
+                    ,  {"id":  66012182
+                    ,"name":  "免醋、辣椒酱"
+                    }
+                    ]
+                    }
+                    ]
+                    }
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p1.meituan.net/210.0/wmproduct/48180cdbb0a879f3bb2f1ac0b61bdbc6123770.jpg" data-src="http://p1.meituan.net/210.0/wmproduct/48180cdbb0a879f3bb2f1ac0b61bdbc6123770.jpg" class="food-shape scroll-loading">
+                      <div class="description">       具有百年历史的上海传统小吃，皮酥、汁浓、肉香。包子顶部的白芝麻，更有补血养血、美容抗衰老之功效。
+                      </div>
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="【招牌】生煎先生（4个）">
+                    【招牌】生煎先生（
+                    ...
+                      </span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                        <i class="icon i-zan"></i>
+                        <span class="cc-lightred-new">(874)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售1401份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food65916654-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+                      <div class="price fl">
+                          <div class="only">¥12/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food pic-food-col2" id="90520009">
+                  <script type="text/template" id="foodcontext-90520009">
+
+                      {"id":  90520009
+                      ,"name":  "【招牌】当鲜虾遇见芝士（4个）"
+                      ,"price":  "20"
+                      ,"origin_price":  "20"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  95060142
+                      ,"name":  ""
+                      ,"price":  "20"
+                      ,"origin_price":  "20"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      ,"attr":  [  {"name":  "口味"
+                      ,"list":  [  {"id":  66012326
+                      ,"name":  "配醋"
+                      }
+                      ,  {"id":  66012327
+                      ,"name":  "配辣椒酱"
+                      }
+                      ,  {"id":  66012328
+                      ,"name":  "配醋、辣椒酱"
+                      }
+                      ,  {"id":  66012329
+                      ,"name":  "免醋、辣椒酱"
+                      }
+                      ]
+                      }
+                      ]
+                      }
+  
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p0.meituan.net/210.0/wmproduct/0307d1d37fe7cf42860e1f0c9dc0f520126171.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/0307d1d37fe7cf42860e1f0c9dc0f520126171.jpg" class="food-shape scroll-loading">
+                      <div class="description">    新鲜滑嫩的虾仁混搭香味醇厚的马苏里拉芝士作为馅料，顶部点缀以益肝补肾的黑芝麻，是喜爱芝士者难以抗拒的味觉诱惑。
+                      </div>
+                  </div>
+
+                  <div class="np clearfix">
+                    <span class="name" title="【招牌】当鲜虾遇见芝士（4个）">
+                  【招牌】当鲜虾遇见
+                  ...
+                    </span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                        <i class="icon i-zan"></i>
+                        <span class="cc-lightred-new">(129)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售204份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food90520009-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+                      <div class="price fl">
+                          <div class="only">¥20/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food" id="266747328">
+                  <script type="text/template" id="foodcontext-266747328">
+
+
+                      {"id":  266747328
+                      ,"name":  "前无古人鸭血粉丝汤（不辣）"
+                      ,"price":  "20"
+                      ,"origin_price":  "20"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  290780754
+                      ,"name":  ""
+                      ,"price":  "20"
+                      ,"origin_price":  "20"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      ,"attr":  [  {"name":  "配料"
+                      ,"list":  [  {"id":  91178196
+                      ,"name":  "标准"
+                      }
+                      ,  {"id":  91178197
+                      ,"name":  "免香菜"
+                      }
+                      ]
+                      }
+                      ]
+                      }
+  
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p0.meituan.net/210.0/wmproduct/c1f0aedea84a67341463231d354a82ce122782.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/c1f0aedea84a67341463231d354a82ce122782.jpg" class="food-shape scroll-loading">
+                      <div class="description">    南京传统小吃，主料粉丝、鸭血、鸭肾、鸭肝，配以精心熬制的老鸭汤，食之口感鲜香爽滑，更有补血清肺、滋补养颜之功效。
+                      </div>
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="前无古人鸭血粉丝汤（不辣）">前无古人鸭血粉丝汤...</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                          <i class="icon i-zan"></i>
+                          <span class="cc-lightred-new">(6)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售107份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food266747328-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥20/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food" id="266746569">
+                  <script type="text/template" id="foodcontext-266746569">
+
+                      {"id":  266746569
+                      ,"name":  "后无来者肥肠酸辣粉（酸辣）"
+                      ,"price":  "20"
+                      ,"origin_price":  "20"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  290779486
+                      ,"name":  ""
+                      ,"price":  "20"
+                      ,"origin_price":  "20"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      ,"attr":  [  {"name":  "配料"
+                      ,"list":  [  {"id":  91177834
+                      ,"name":  "标准"
+                      }
+                      ,  {"id":  91177835
+                      ,"name":  "免葱花"
+                      }
+                      ,  {"id":  91177836
+                      ,"name":  "免香菜"
+                      }
+                      ,  {"id":  91177837
+                      ,"name":  "免葱花香菜"
+                      }
+                      ]
+                      }
+                      ,  {"name":  "辣度"
+                      ,"list":  [  {"id":  91177838
+                      ,"name":  "正宗辣"
+                      }
+                      ,  {"id":  91177839
+                      ,"name":  "少辣"
+                      }
+                      ]
+                      }
+                      ]
+                      }
+  
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p1.meituan.net/210.0/wmproduct/c38690a712747c81760a67a291cbe286136993.jpg" data-src="http://p1.meituan.net/210.0/wmproduct/c38690a712747c81760a67a291cbe286136993.jpg" class="food-shape scroll-loading">
+                      <div class="description">    取材于四川当地手工制作的红薯粉，配上肥肠、花生、酸豆角、榨菜，混杂着辣椒麻油的浓香、葱花香菜的芬芳,嚼于口中,麻！辣！鲜！香！</div>
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="后无来者肥肠酸辣粉（酸辣）">后无来者肥肠酸辣粉...</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                          <i class="icon i-zan"></i>
+                          <span class="cc-lightred-new">(3)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey"><span>月售79份</span></div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food266746569-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+                      <div class="price fl">
+                          <div class="only">¥20/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food pic-food-col2" id="65916655">
+                  <script type="text/template" id="foodcontext-65916655">
+
+                      {"id":  65916655
+                      ,"name":  "【主厨推荐】快快长大保护妈妈牛腩面（微辣）"
+                      ,"price":  "27"
+                      ,"origin_price":  "27"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  68335916
+                      ,"name":  ""
+                      ,"price":  "27"
+                      ,"origin_price":  "27"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      ,"attr":  [  {"name":  "配料"
+                      ,"list":  [  {"id":  2802576
+                      ,"name":  "标准"
+                      }
+                      ,  {"id":  2802580
+                      ,"name":  "免香菜"
+                      }
+                      ]
+                      }
+                      ]
+                      }
+  
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p1.meituan.net/210.0/wmproduct/869c5e959be537b4bdf1dcfb9cf130ab124512.jpg" data-src="http://p1.meituan.net/210.0/wmproduct/869c5e959be537b4bdf1dcfb9cf130ab124512.jpg" class="food-shape scroll-loading">
+                      <div class="description">     大块精心熬制的特色牛腩，配以益肝健脾、润肤抗衰的胡萝卜和青菜，味道鲜美，营养丰富。
+                  
+                      </div>
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="【主厨推荐】快快长大保护妈妈牛腩面（微辣）">【主厨推荐】快快长...</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                          <i class="icon i-zan"></i>
+                          <span class="cc-lightred-new">(50)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售55份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food65916655-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+                      <div class="price fl">
+                          <div class="only">¥27/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food  pic-food-rowlast" id="90522006">
+                  <script type="text/template" id="foodcontext-90522006">
+
+                      {"id":  90522006
+                      ,"name":  "酸酸辣辣鸡杂面（酸辣）"
+                      ,"price":  "27"
+                      ,"origin_price":  "27"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  95062421
+                      ,"name":  ""
+                      ,"price":  "27"
+                      ,"origin_price":  "27"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      ,"attr":  [  {"name":  "配料"
+                      ,"list":  [  {"id":  7747990
+                      ,"name":  "标准"
+                      }
+                      ,  {"id":  7747991
+                      ,"name":  "免葱花"
+                      }
+                      ,  {"id":  7747992
+                      ,"name":  "免香菜"
+                      }
+                      ,  {"id":  7748101
+                      ,"name":  "免葱花香菜"
+                      }
+                      ]
+                      }
+                      ]
+                      }
+  
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p0.meituan.net/210.0/wmproduct/80d4e7d6e2fdd4d7f0425fd736722f17125464.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/80d4e7d6e2fdd4d7f0425fd736722f17125464.jpg" class="food-shape scroll-loading">
+                      <div class="description">    酸酸辣辣，极为开胃！鸡杂中丰富的铁元素，更是女性补血养颜的佳品！</div>
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="酸酸辣辣鸡杂面（酸辣）">酸酸辣辣鸡杂面（酸...</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                        <i class="icon i-zan"></i>
+                        <span class="cc-lightred-new">(16)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售36份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food90522006-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥27/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food  pic-food-rowlast" id="90520049">
+                  <script type="text/template" id="foodcontext-90520049">
+
+                      {"id":  90520049
+                      ,"name":  "花样年华炸酱面"
+                      ,"price":  "25"
+                      ,"origin_price":  "25"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  95060190
+                      ,"name":  ""
+                      ,"price":  "25"
+                      ,"origin_price":  "25"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      ,"attr":  [  {"name":  "配料"
+                      ,"list":  [  {"id":  66012820
+                      ,"name":  "标准"
+                      }
+                      ,  {"id":  66012821
+                      ,"name":  "免葱花"
+                      }
+                      ,  {"id":  66012822
+                      ,"name":  "免香菜"
+                      }
+                      ,  {"id":  66012823
+                      ,"name":  "免葱花香菜"
+                      }
+                      ]
+                      }
+                      ]
+                      }
+    
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p1.meituan.net/210.0/wmproduct/ee2678b80e9c7d04cf1a8b31be4116fe136731.jpg" data-src="http://p1.meituan.net/210.0/wmproduct/ee2678b80e9c7d04cf1a8b31be4116fe136731.jpg" class="food-shape scroll-loading">
+                      <div class="description">    精心熬制的鸡蛋炸酱拌着Q弹的面条，配上青瓜丝、胡萝卜丝、紫橄榄、豆芽，色香味浓，营养均衡。
+                      </div>
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="花样年华炸酱面">花样年华炸酱面</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                        <i class="icon i-zan"></i>
+                        <span class="cc-lightred-new">(44)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售49份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food90520049-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥25/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food pic-food-col2 pic-food-rowlast" id="65916660">
+                  <script type="text/template" id="foodcontext-65916660">
+
+                      {"id":  65916660
+                      ,"name":  "豌豆杂酱面（微辣）"
+                      ,"price":  "20"
+                      ,"origin_price":  "20"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  68335921
+                      ,"name":  ""
+                      ,"price":  "20"
+                      ,"origin_price":  "20"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      ,"attr":  [  {"name":  "配料"
+                      ,"list":  [  {"id":  22313514
+                      ,"name":  "标准"
+                      }
+                      ,  {"id":  22313515
+                      ,"name":  "免葱花"
+                      }
+                      ,  {"id":  22313516
+                      ,"name":  "免香菜"
+                      }
+                      ,  {"id":  22313517
+                      ,"name":  "免葱花香菜"
+                      }
+                      ,  {"id":  78376093
+                      ,"name":  "免麻椒"
+                      }
+                      ]
+                      }
+                      ]
+                      }
+    
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p0.meituan.net/210.0/wmproduct/7481e72d6e9020ff8fcec6267155cef7122991.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/7481e72d6e9020ff8fcec6267155cef7122991.jpg" class="food-shape scroll-loading">
+                      <div class="description">    面条的劲道，豌豆的软糯，肉酱的浓香，食后唇齿留香，回味无穷！营养功效：豌豆含有一般蔬菜所没有的多种营养成分，具有提高免疫力、增强新陈代谢的功能。</div>
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="豌豆杂酱面（微辣）">豌豆杂酱面（微辣）</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                        <i class="icon i-zan"></i>
+                        <span class="cc-lightred-new">(87)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售167份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food65916660-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥20/份</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="category">
+          <h3 class="title title-4" title="配菜">
+              <span class="tag-na">配菜</span>
+          </h3>
+          <div class="pic-food-cont clearfix">
+              <div class="j-pic-food pic-food" id="131193949">
+                  <script type="text/template" id="foodcontext-131193949">
+
+                      {"id":  131193949
+                      ,"name":  "口水鸡（辣）"
+                      ,"price":  "18"
+                      ,"origin_price":  "18"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  139937163
+                      ,"name":  ""
+                      ,"price":  "18"
+                      ,"origin_price":  "18"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      }
+  
+                  </script>
+                  <div class="avatar">
+                    <img src="http://p1.meituan.net/210.0/wmproduct/3d985841b5e04c2310438bb0b2e78cda127539.jpg" data-src="http://p1.meituan.net/210.0/wmproduct/3d985841b5e04c2310438bb0b2e78cda127539.jpg" class="food-shape scroll-loading">
+                  </div>
+                  <div class="np clearfix">
+                      <span class="name" title="口水鸡（辣）">口水鸡（辣）</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                        <i class="icon i-zan"></i>
+                        <span class="cc-lightred-new">(7)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售35份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food131193949-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+                      <div class="price fl">
+                          <div class="only">¥18/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food" id="266751894">
+                  <script type="text/template" id="foodcontext-266751894">
+
+                    {"id":  266751894
+                    ,"name":  "小碗牛肉（微辣）"
+                    ,"price":  "18"
+                    ,"origin_price":  "18"
+                    ,"minCount":  "1"
+                    ,"onSale":  "1"
+                    ,"sku":  [  {"id":  290786627
+                    ,"name":  ""
+                    ,"price":  "18"
+                    ,"origin_price":  "18"
+                    ,"minCount":  1
+                    ,"stock":  0
+                    ,"isSellOut":  0
+                    }
+                    ]
+                    }
+  
+                  </script>
+                  <div class="avatar">
+                    <img src="http://p1.meituan.net/210.0/wmproduct/604ebc1298a68e76fcb71863ae383764106996.jpg" data-src="http://p1.meituan.net/210.0/wmproduct/604ebc1298a68e76fcb71863ae383764106996.jpg" class="food-shape scroll-loading">
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="小碗牛肉（微辣）">小碗牛肉（微辣）</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                          <i class="icon i-zan"></i>
+                          <span class="cc-lightred-new">(2)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售18份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food266751894-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥18/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food pic-food-col2" id="90520231">
+                  <script type="text/template" id="foodcontext-90520231">
+
+                      {"id":  90520231
+                      ,"name":  "那些年错过的椒麻鸡（麻辣）"
+                      ,"price":  "18"
+                      ,"origin_price":  "18"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  95060423
+                      ,"name":  ""
+                      ,"price":  "18"
+                      ,"origin_price":  "18"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      }
+  
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p0.meituan.net/210.0/wmproduct/2d6f0fe990380d203289bf4de1eb6789120413.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/2d6f0fe990380d203289bf4de1eb6789120413.jpg" class="food-shape scroll-loading">
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="那些年错过的椒麻鸡（麻辣）">那些年错过的椒麻鸡...</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                          <i class="icon i-zan"></i>
+                          <span class="cc-lightred-new">(22)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售37份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food90520231-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥18/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food" id="90520941">
+                  <script type="text/template" id="foodcontext-90520941">
+
+                      {"id":  90520941
+                      ,"name":  "来自星星的小秋葵（不辣）"
+                      ,"price":  "15"
+                      ,"origin_price":  "15"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  95061234
+                      ,"name":  ""
+                      ,"price":  "15"
+                      ,"origin_price":  "15"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      }
+  
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p0.meituan.net/210.0/wmproduct/470043199c818521340d37a6c12deb97122403.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/470043199c818521340d37a6c12deb97122403.jpg" class="food-shape scroll-loading">
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="来自星星的小秋葵（不辣）">来自星星的小秋葵（...</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                        <i class="icon i-zan"></i>
+                        <span class="cc-lightred-new">(18)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售46份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food90520941-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥15/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food" id="90521102">
+                  <script type="text/template" id="foodcontext-90521102">
+
+                        {"id":  90521102
+                        ,"name":  "清新爽口土豆丝"
+                        ,"price":  "8"
+                        ,"origin_price":  "8"
+                        ,"minCount":  "1"
+                        ,"onSale":  "1"
+                        ,"sku":  [  {"id":  95061418
+                        ,"name":  ""
+                        ,"price":  "8"
+                        ,"origin_price":  "8"
+                        ,"minCount":  1
+                        ,"stock":  0
+                        ,"isSellOut":  0
+                        }
+                        ]
+                        }
+                    
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p0.meituan.net/210.0/wmproduct/9ad5ea6fa833ea217aea13bf7a725e4f120670.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/9ad5ea6fa833ea217aea13bf7a725e4f120670.jpg" class="food-shape scroll-loading">
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="清新爽口土豆丝">清新爽口土豆丝</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                          <i class="icon i-zan"></i>
+                          <span class="cc-lightred-new">(48)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售101份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food90521102-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥8/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food pic-food-col2" id="131194619">
+                  <script type="text/template" id="foodcontext-131194619">
+
+                      {"id":  131194619
+                      ,"name":  "凉拌腐竹"
+                      ,"price":  "8"
+                      ,"origin_price":  "8"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  139937864
+                      ,"name":  ""
+                      ,"price":  "8"
+                      ,"origin_price":  "8"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      }
+  
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p1.meituan.net/210.0/wmproduct/5d9358aff1f07b490ad803531e8b740f107222.jpg" data-src="http://p1.meituan.net/210.0/wmproduct/5d9358aff1f07b490ad803531e8b740f107222.jpg" class="food-shape scroll-loading">
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="凉拌腐竹">凉拌腐竹</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                          <i class="icon i-zan"></i>
+                          <span class="cc-lightred-new">(14)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售73份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food131194619-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥8/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food  pic-food-rowlast" id="266751956">
+                  <script type="text/template" id="foodcontext-266751956">
+
+                      {"id":  266751956
+                      ,"name":  "国民凉菜拌青瓜"
+                      ,"price":  "8"
+                      ,"origin_price":  "8"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  290786679
+                      ,"name":  ""
+                      ,"price":  "8"
+                      ,"origin_price":  "8"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      }
+  
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p1.meituan.net/210.0/wmproduct/40eb3358dc21e9a7cd973f54d8350850114830.jpg" data-src="http://p1.meituan.net/210.0/wmproduct/40eb3358dc21e9a7cd973f54d8350850114830.jpg" class="food-shape scroll-loading">
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="国民凉菜拌青瓜">国民凉菜拌青瓜</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售46份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food266751956-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥8/份</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="category">
+          <h3 class="title title-5" title="甜点">
+              <span class="tag-na">甜点</span>
+          </h3>
+          <div class="pic-food-cont clearfix">
+              <div class="j-pic-food pic-food  pic-food-rowlast" id="131112857">
+                  <script type="text/template" id="foodcontext-131112857">
+
+                      {"id":  131112857
+                      ,"name":  "红糖桂花冰粉（冷）"
+                      ,"price":  "7"
+                      ,"origin_price":  "7"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  139849188
+                      ,"name":  ""
+                      ,"price":  "7"
+                      ,"origin_price":  "7"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      }
+              
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p0.meituan.net/210.0/wmproduct/0d0e1f564c92bf191a347be166d895e1115387.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/0d0e1f564c92bf191a347be166d895e1115387.jpg" class="food-shape scroll-loading">
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="红糖桂花冰粉（冷）">红糖桂花冰粉（冷）</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                          <i class="icon i-zan"></i>
+                          <span class="cc-lightred-new">(70)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售176份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food131112857-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥7/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food  pic-food-rowlast" id="65916674">
+                  <script type="text/template" id="foodcontext-65916674">
+
+                      {"id":  65916674
+                      ,"name":  "【招牌】双皮奶"
+                      ,"price":  "7"
+                      ,"origin_price":  "7"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  68335935
+                      ,"name":  ""
+                      ,"price":  "7"
+                      ,"origin_price":  "7"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      ,"attr":  [  {"name":  "温度"
+                      ,"list":  [  {"id":  39911247
+                      ,"name":  "冷"
+                      }
+                      ,  {"id":  39911248
+                      ,"name":  "热"
+                      }
+                      ]
+                      }
+                      ]
+                      }
+  
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p1.meituan.net/210.0/wmproduct/d4a9386ac7c29237a85152d7ab67942980859.jpg" data-src="http://p1.meituan.net/210.0/wmproduct/d4a9386ac7c29237a85152d7ab67942980859.jpg" class="food-shape scroll-loading">
+                      <div class="description">    伊利纯牛奶精心熬制，质感细腻嫩滑，口味甜香清淡。</div>
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="【招牌】双皮奶">【招牌】双皮奶</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                          <i class="icon i-zan"></i>
+                          <span class="cc-lightred-new">(172)</span>
+                      </div>
+                    <div class="sold-count ct-lightgrey">
+                        <span>月售395份</span>
+                    </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food65916674-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥7/份</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="category">
+          <h3 class="title title-6" title="饮料">
+              <span class="tag-na">饮料</span>
+          </h3>
+          <div class="pic-food-cont clearfix">
+              <div class="j-pic-food pic-food  pic-food-rowlast" id="131142197">
+                  <script type="text/template" id="foodcontext-131142197">
+
+                      {"id":  131142197
+                      ,"name":  "柠乐（冷）"
+                      ,"price":  "7"
+                      ,"origin_price":  "7"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  139881622
+                      ,"name":  ""
+                      ,"price":  "7"
+                      ,"origin_price":  "7"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      ,"attr":  [  {"name":  "冰块"
+                      ,"list":  [  {"id":  39911098
+                      ,"name":  "标准"
+                      }
+                      ,  {"id":  39911099
+                      ,"name":  "少冰"
+                      }
+                      ,  {"id":  39911100
+                      ,"name":  "免冰"
+                      }
+                      ]
+                      }
+                      ]
+                      }
+  
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p0.meituan.net/210.0/wmproduct/759b17c0f02b99f7c43be3c69500aeb1132739.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/759b17c0f02b99f7c43be3c69500aeb1132739.jpg" class="food-shape scroll-loading">
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="柠乐（冷）">柠乐（冷）</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                          <i class="icon i-zan"></i>
+                          <span class="cc-lightred-new">(7)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售52份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food131142197-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥7/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food  pic-food-rowlast" id="65916679">
+                  <script type="text/template" id="foodcontext-65916679">
+
+                      {"id":  65916679
+                      ,"name":  "豆浆"
+                      ,"price":  "4"
+                      ,"origin_price":  "4"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  68335940
+                      ,"name":  ""
+                      ,"price":  "4"
+                      ,"origin_price":  "4"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      ,"attr":  [  {"name":  "温度"
+                      ,"list":  [  {"id":  39911249
+                      ,"name":  "冷"
+                      }
+                      ,  {"id":  39911250
+                      ,"name":  "热"
+                      }
+                      ]
+                      }
+                      ]
+                      }
+  
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p0.meituan.net/210.0/wmproduct/bc1911d6f226968def7ed76e48d020a394091.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/bc1911d6f226968def7ed76e48d020a394091.jpg" class="food-shape scroll-loading">
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="豆浆">豆浆</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                          <i class="icon i-zan"></i>
+                          <span class="cc-lightred-new">(52)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                        <span>月售173份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food65916679-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥4/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food pic-food-col2 pic-food-rowlast" id="65916683">
+                  <script type="text/template" id="foodcontext-65916683">
+
+                      {"id":  65916683
+                      ,"name":  "柠檬红茶"
+                      ,"price":  "7"
+                      ,"origin_price":  "7"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  68335944
+                      ,"name":  ""
+                      ,"price":  "7"
+                      ,"origin_price":  "7"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      ,"attr":  [  {"name":  "温度"
+                      ,"list":  [  {"id":  39911251
+                      ,"name":  "冷"
+                      }
+                      ,  {"id":  39911252
+                      ,"name":  "热"
+                      }
+                      ]
+                      }
+                      ]
+                      }
+  
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p0.meituan.net/210.0/wmproduct/d67fe171358721a06917e81cef3accdf127692.jpg" data-src="http://p0.meituan.net/210.0/wmproduct/d67fe171358721a06917e81cef3accdf127692.jpg" class="food-shape scroll-loading">
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name" title="柠檬红茶">柠檬红茶</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="fr zan-count">
+                          <i class="icon i-zan"></i>
+                          <span class="cc-lightred-new">(28)</span>
+                      </div>
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售49份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food65916683-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥7/份</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="category">
+          <h3 class="title title-7" title="餐厅形象">
+              <span class="tag-na">餐厅形象</span>
+          </h3>
+          <div class="pic-food-cont clearfix">
+              <div class="j-pic-food pic-food  pic-food-rowlast" id="232559307">
+                  <script type="text/template" id="foodcontext-232559307">
+
+                      {"id":  232559307
+                      ,"name":  "餐厅.外观"
+                      ,"price":  "0.01"
+                      ,"origin_price":  "0.01"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  252907919
+                      ,"name":  ""
+                      ,"price":  "0.01"
+                      ,"origin_price":  "0.01"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      }
+                      
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p1.meituan.net/210.0/xianfu/12bb83d8e3bdd1b9378947c529aef393107704.jpg" data-src="http://p1.meituan.net/210.0/xianfu/12bb83d8e3bdd1b9378947c529aef393107704.jpg" class="food-shape scroll-loading">
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name fl" title="餐厅.外观">餐厅.外观</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售487份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food232559307-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥0.01/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food  pic-food-rowlast" id="232559259">
+                  <script type="text/template" id="foodcontext-232559259">
+
+                      {"id":  232559259
+                      ,"name":  "餐厅.内饰"
+                      ,"price":  "0.01"
+                      ,"origin_price":  "0.01"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  252907850
+                      ,"name":  ""
+                      ,"price":  "0.01"
+                      ,"origin_price":  "0.01"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      }
+  
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p1.meituan.net/210.0/xianfu/9202c54c1a03d0e9d1e450203241b4bf75997.jpg" data-src="http://p1.meituan.net/210.0/xianfu/9202c54c1a03d0e9d1e450203241b4bf75997.jpg" class="food-shape scroll-loading">
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name fl" title="餐厅.内饰">餐厅.内饰</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售186份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food232559259-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥0.01/份</div>
+                      </div>
+                  </div>
+              </div>
+              <div class="j-pic-food pic-food pic-food-col2 pic-food-rowlast" id="232559165">
+                  <script type="text/template" id="foodcontext-232559165">
+
+                      {"id":  232559165
+                      ,"name":  "餐厅.特色"
+                      ,"price":  "0.01"
+                      ,"origin_price":  "0.01"
+                      ,"minCount":  "1"
+                      ,"onSale":  "1"
+                      ,"sku":  [  {"id":  252907750
+                      ,"name":  ""
+                      ,"price":  "0.01"
+                      ,"origin_price":  "0.01"
+                      ,"minCount":  1
+                      ,"stock":  0
+                      ,"isSellOut":  0
+                      }
+                      ]
+                      }
+  
+                  </script>
+                  <div class="avatar">
+                      <img src="http://p0.meituan.net/210.0/xianfu/05fce5db3c0d5d837e6664fc46eab6d388134.jpg" data-src="http://p0.meituan.net/210.0/xianfu/05fce5db3c0d5d837e6664fc46eab6d388134.jpg" class="food-shape scroll-loading">
+                  </div>
+
+                  <div class="np clearfix">
+                      <span class="name fl" title="餐厅.特色">餐厅.特色</span>
+                  </div>
+
+                  <div class="sale-info clearfix">
+                      <div class="sold-count ct-lightgrey">
+                          <span>月售327份</span>
+                      </div>
+                  </div>
+
+                  <div class="labels clearfix">
+                      <a href="javascript:;" class="add fr icon i-addcart j-addcart"></a>
+                      <span id="food232559165-cart-num" class="pic-food-cart-num fr" style="display:none;">0</span>
+
+                      <div class="price fl">
+                          <div class="only">¥0.01/份</div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+</div>
+</body>
+<script type="text/javascript" src="js/parabola.js"></script>
+
+<script type="text/javascript">
+  // 元素以及其他一些变量,#flyItem是订单小球，logo是购物车的图标
+  var eleFlyElement = document.querySelector("#flyItem"), eleShopCart = document.querySelector("#logo");
+  var numberItem = 0;
+  // 抛物线运动
+  var myParabola = funParabola(eleFlyElement, eleShopCart, {
+      speed: 500,
+      curvature: 0.002,    
+      complete: function() {
+          eleFlyElement.style.visibility = "hidden";
+          // eleShopCart.querySelector("span").innerHTML = ++numberItem;
+      }
+  });
+  // 绑定点击事件
+  if (eleFlyElement && eleShopCart) {
+      [].slice.call(document.getElementsByClassName("add")).forEach(function(button) {
+          button.addEventListener("click", function() {
+              // 滚动大小
+              var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft || 0,
+                  scrollTop = document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+              eleFlyElement.style.left = event.clientX + scrollLeft + "px";
+              eleFlyElement.style.top = event.clientY + scrollTop + "px";
+              eleFlyElement.style.visibility = "visible";
+              
+              // 需要重定位
+              myParabola.position().move();  
+          });
+      });
+  }
+</script>
+<script type="text/javascript" src="js/data.js"></script>
+</html>
